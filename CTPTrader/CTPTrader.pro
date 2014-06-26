@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    TraderSpi.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    TraderSpi.h
 
 FORMS    += mainwindow.ui
