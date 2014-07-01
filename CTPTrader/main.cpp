@@ -3,6 +3,7 @@
 #include "TraderSpi.h"
 
 #include <QApplication>
+#include <QMainWindow>
 
 // UserApi对象
 CThostFtdcTraderApi* pUserApi;
@@ -25,19 +26,21 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     // 初始化UserApi
-    pUserApi = CThostFtdcTraderApi::CreateFtdcTraderApi();			// 创建UserApi
-    CTraderSpi* pUserSpi = new CTraderSpi();
-    pUserApi->RegisterSpi((CThostFtdcTraderSpi*)pUserSpi);			// 注册事件类
-    pUserApi->SubscribePublicTopic(THOST_TERT_QUICK);				// 注册公有流
-    pUserApi->SubscribePrivateTopic(THOST_TERT_QUICK);				// 注册私有流
-    pUserApi->RegisterFront(FRONT_ADDR);							// connect
-    pUserApi->Init();
+//    pUserApi = CThostFtdcTraderApi::CreateFtdcTraderApi();			// 创建UserApi
+//    CTraderSpi* pUserSpi = new CTraderSpi();
+//    pUserApi->RegisterSpi((CThostFtdcTraderSpi*)pUserSpi);			// 注册事件类
+//    pUserApi->SubscribePublicTopic(THOST_TERT_QUICK);				// 注册公有流
+//    pUserApi->SubscribePrivateTopic(THOST_TERT_QUICK);				// 注册私有流
+//    pUserApi->RegisterFront(FRONT_ADDR);							// connect
+//    pUserApi->Init();
+//    pUserApi->Join();
+////	pUserApi->Release();
 
-    pUserApi->Join();
-//	pUserApi->Release();
-
-//    MainWindow w;
+    MainWindow w;
+    w.show();
+//    QMainWindow w;
 //    w.show();
 
     return a.exec();
+    //return 0;
 }

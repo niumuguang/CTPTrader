@@ -1,11 +1,14 @@
 //#include <windows.h>
 #include <iostream>
-using namespace std;
+#include <stdlib.h>
 
 //#include ".\ThostTraderApi\ThostFtdcTraderApi.h"
 #include "./CTP/api/trade/win/public/ThostFtdcTraderApi.h"
 #include "TraderSpi.h"
 #include <string.h>
+#include <QThread>
+
+using namespace std;
 
 #pragma warning(disable : 4996)
 
@@ -64,7 +67,7 @@ void CTraderSpi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin,
 		SESSION_ID = pRspUserLogin->SessionID;
 		int iNextOrderRef = atoi(pRspUserLogin->MaxOrderRef);
 		iNextOrderRef++;
-		sprintf(ORDER_REF, "%d", iNextOrderRef);
+        //sprintf(ORDER_REF, "%d", iNextOrderRef);
 		///获取当前交易日
 		cerr << "--->>> 获取当前交易日 = " << pUserApi->GetTradingDay() << endl;
 		///投资者结算结果确认
@@ -108,7 +111,7 @@ void CTraderSpi::ReqQryInstrument()
 		else
 		{
 			cerr << "--->>> 请求查询合约: "  << iResult << ", 受到流控" << endl;
-			Sleep(1000);
+            //QThread::Sleep(1000);
 		}
 	} // while
 }
@@ -140,7 +143,7 @@ void CTraderSpi::ReqQryTradingAccount()
 		else
 		{
 			cerr << "--->>> 请求查询资金账户: "  << iResult << ", 受到流控" << endl;
-			Sleep(1000);
+//            QThread::Sleep(1000);
 		}
 	} // while
 }
@@ -173,7 +176,7 @@ void CTraderSpi::ReqQryInvestorPosition()
 		else
 		{
 			cerr << "--->>> 请求查询投资者持仓: "  << iResult << ", 受到流控" << endl;
-			Sleep(1000);
+//			Sleep(1000);
 		}
 	} // while
 }
